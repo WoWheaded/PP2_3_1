@@ -1,11 +1,10 @@
-package web.controller;
+package webApp.controller;
 
-import web.model.User;
-import web.service.UserService;
+import webApp.model.User;
+import webApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
@@ -37,18 +36,14 @@ public class UserController {
     }
 
     @PostMapping("/new")
-    public String add(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "create";
-        } else {
-            userService.addUser(user);
-            return "redirect:/";
-        }
+    public String add(@ModelAttribute("user") @Valid User user) {
+        userService.addUser(user);
+        return "redirect:/";
     }
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id) {
-        userService.removeUser(id);
+        userService.deleteUser(id);
         return "redirect:/";
     }
 
@@ -59,12 +54,8 @@ public class UserController {
     }
 
     @PatchMapping("/edit")
-    public String update(@Valid User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "edit";
-        } else {
-            userService.updateUser(user);
-            return "redirect:/";
-        }
+    public String update(@Valid User user) {
+        userService.updateUser(user);
+        return "redirect:/";
     }
 }

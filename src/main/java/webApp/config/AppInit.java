@@ -1,4 +1,4 @@
-package web.config;
+package webApp.config;
 
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -23,6 +23,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
     @Override
     public void onStartup(ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);

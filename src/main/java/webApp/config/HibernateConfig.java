@@ -1,4 +1,4 @@
-package web.config;
+package webApp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,7 +21,7 @@ import java.util.Properties;
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScan("web")
+@ComponentScan("webApp")
 public class HibernateConfig {
 
     private final Environment env;
@@ -45,7 +45,7 @@ public class HibernateConfig {
         LocalContainerEntityManagerFactoryBean factoryBean
                 = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(getDataSource());
-        factoryBean.setPackagesToScan("web.model");
+        factoryBean.setPackagesToScan("webApp.model");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         factoryBean.setJpaVendorAdapter(vendorAdapter);

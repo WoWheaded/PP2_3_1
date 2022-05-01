@@ -1,11 +1,11 @@
-package web.service;
+package webApp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import web.dao.UserDAO;
-import web.model.User;
-import javax.validation.Valid;
+import webApp.dao.UserDAO;
+import webApp.model.User;
+
 import java.util.List;
 
 @Service
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Object getUserById(long id) {
+    public User getUserById(long id) {
         return userDAO.getUserById(id);
     }
 
@@ -35,12 +35,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void removeUser(long id) {
-        userDAO.removeUser(id);
+    public void deleteUser(long id) {
+        userDAO.deleteUser(id);
     }
 
     @Override
-    public void updateUser(@Valid User user) {
+    public void updateUser(User user) {
         userDAO.updateUser(user);
     }
 }
