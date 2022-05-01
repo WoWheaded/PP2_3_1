@@ -46,11 +46,9 @@ public class HibernateConfig {
                 = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(getDataSource());
         factoryBean.setPackagesToScan("webApp.model");
-
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         factoryBean.setJpaVendorAdapter(vendorAdapter);
         factoryBean.setJpaProperties(additionalProperties());
-
         return factoryBean;
     }
 
@@ -58,7 +56,6 @@ public class HibernateConfig {
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-
         return transactionManager;
     }
 
@@ -72,7 +69,6 @@ public class HibernateConfig {
         properties.put("hibernate.show_sql", env.getProperty("db.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("db.hbm2ddl.auto"));
         properties.put("hibernate.dialect", env.getProperty("db.dialect"));
-
         return properties;
     }
 }
